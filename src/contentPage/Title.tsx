@@ -1,5 +1,6 @@
-const Title = () => {
-  
+import { handleScroll } from "./ContentPage";
+
+const Title = ({ handleScroll }: handleScroll) => {
   return (
     <div className="title">
       <h2>Курс для будущих барменов</h2>
@@ -10,7 +11,9 @@ const Title = () => {
         Углуби свои знания или начни с нуля. Независимо от уровня подготовки, курс поможет тебе
         улучшить мастерство создания коктейлей
       </h3>
-      <button className="title__button">Подробнее</button>
+      <a onClick={() => handleScroll("#about")} className="title__button">
+        Подробнее
+      </a>
     </div>
   );
 };

@@ -48,7 +48,7 @@ const PriceBlock = () => {
 
 
   return (
-    <div className="price">
+    <div className="price" id="price">
       <div className="container">
         <span className="price__title">Тарифы</span>
         <p className="price__description">
