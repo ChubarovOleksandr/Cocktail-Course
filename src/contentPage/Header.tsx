@@ -19,7 +19,7 @@ const Header = ({ handleScroll }: handleScroll) => {
             <a onClick={() => handleScroll("#faq")}>FAQ</a>
           </li>
           <li className="header__item">
-            <NavLink to="/login">Личный кабинет</NavLink>
+            <NavLink to="/auth">Личный кабинет</NavLink>
             <img src={avatarIcon} alt="Avatar" />
           </li>
         </ul>
