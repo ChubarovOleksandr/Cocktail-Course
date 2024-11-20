@@ -1,7 +1,7 @@
-import photo1 from "../assets/homemade.jpg";
-import photo2 from "../assets/bar.jpg";
-import photo3 from "../assets/drink.jpg";
-import photo4 from "../assets/business.jpg";
+import photo1 from "../assets/1.jpg";
+import photo2 from "../assets/2.jpg";
+import photo3 from "../assets/3.jpg";
+import photo4 from "../assets/4.jpg";
 
 const AboutItems = () => {
   return (

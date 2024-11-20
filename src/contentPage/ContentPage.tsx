@@ -5,6 +5,7 @@ import "../style/contentPage/contentPage.scss";
 import PriceBlock from "./PriceBlock";
 import InformationBlock from "./InformationBlock";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export interface handleScroll {
   handleScroll: (id: string) => void;
@@ -28,10 +29,8 @@ const ContentPage = () => {
   return (
     <>
       <div className="intro">
-        <div className="container">
           <Header handleScroll={handleScroll} />
           <Title handleScroll={handleScroll} />
-        </div>
       </div>
       <div className="about" id="about">
         <div className="container">
