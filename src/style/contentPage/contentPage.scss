@@ -9,7 +9,7 @@ html {
 }
 
 .intro {
-  background: #000;
+  background: rgb(22,17,13);
   height: 100dvh;
   .header {
     position: fixed;
@@ -20,14 +20,14 @@ html {
     z-index: 10;
     .container {
       display: flex;
-      height: 80px;
+      height: 60px;
       justify-content: space-between;
       align-items: center;
       font-family: "Roboto Condensed", sans-serif;
     }
     .logo {
       transition: transform 0.3s;
-      width: 40px;
+      width: 30px;
       height: 40px;
       &:hover {
         transform: scale(1.1);
@@ -75,9 +75,17 @@ html {
   .title {
     height: 100%;
     display: flex;
+    align-items: center;
     overflow: hidden;
+    background-image: url('../../assets/985A5117\ 2-min.jpg');
+    background-position: 41vw 0;
+    background-repeat: no-repeat;
+    background-size: contain;
     .title__text {
       display: flex;
+      width: 62.5vw;
+      height: 100%;
+      background: rgba(24,19,15, 0.95);
       align-items: flex-end;
       justify-content: center;
       flex-direction: column;
@@ -86,12 +94,13 @@ html {
       h1 {
         font-weight: bold;
         font-family: "Inter", serif;
-        font-size: 52px;
+        font-size: 46px;
+        line-height: 52px;
         color: #fff;
         text-transform: uppercase;
         letter-spacing: -7%;
         span {
-          color: #ffd700;
+          color: rgb(198,79,82);
         }
       }
       h2 {
@@ -124,21 +133,13 @@ html {
         font-weight: 400;
         text-transform: uppercase;
         margin-top: 100px;
-        border: 2px solid #ffd700;
+        border: 2px solid rgb(198,79,82);
         border-radius: 5px;
         transition: all 0.3s;
         &:hover {
           // box-shadow: 0px 0px 15px #FFD700;
           border: 2px solid red;
         }
-      }
-    }
-    .title__bg {
-      display: flex;
-      align-items: center;
-      img {
-        max-width: 900px;
-        object-fit: fill;
       }
     }
   }
@@ -163,6 +164,9 @@ html {
       align-items: center;
       justify-content: center;
       gap: 40px;
+      .about__image img{
+        width: 120px;
+      }
       &:hover {
         img {
           filter: grayscale(0%);
@@ -209,7 +213,8 @@ html {
   }
 }
 .price {
-  background: #fff;
+  background: #000;
+  color: #ffff;
   padding: 80px 0;
   text-align: center;
   .price__title {
@@ -225,33 +230,36 @@ html {
     font-weight: 400;
     letter-spacing: 5%;
     margin-top: 40px;
-    color: #1e1e1e;
+    // color: #1e1e1e;
     .underline {
       border-bottom: 1px solid #929292;
     }
   }
   .price__cards {
-    margin-top: 90px;
+    margin-top: 30px;
     display: flex;
     gap: 3%;
     .card.light-bg {
-      background: #fff;
+      // background: #313131;
     }
     .card {
       border: 1px solid rgba(208, 208, 208, 40%);
       border-radius: 20px;
-      background: rgba($color: #dedede, $alpha: 0.2);
+      // background: rgba($color: #dedede, $alpha: 0.2);
+      background: rgba($color: #fff, $alpha: 1);
       flex: 30%;
       .card__header {
         height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 1px solid rgba(208, 208, 208, 40%);
+        // border-bottom: 1px solid rgba(208, 208, 208, 40%);
+        border-bottom: 1px solid rgba(105, 105, 105, 0.4);
         span {
           font-family: "Inter", sans-serif;
           font-size: 20px;
           color: #3e3d3d;
+          // color: #fff;
           text-transform: uppercase;
         }
       }
@@ -260,13 +268,32 @@ html {
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        height: 400px;
+        height: 450px;
+        .subtitle {
+          max-width: 350px;
+          line-height: 26px;
+          display: none;
+        }
+        .subdescription {
+          font-family: "Inter", sans-serif;
+          font-size: 17px;
+          max-width: 80%;
+          margin: 0 auto;
+          line-height: 24px;
+          text-align: justify;
+          text-align-last: center;
+          color: #000;
+          // color: #bbbbbb;
+          margin-bottom: 30px;
+          margin-top: 40px;
+          height: 190px;
+        }
         span {
           font-family: "Inter", sans-serif;
           font-size: 20px;
-          color: #898989;
+          // color: #898989;
           font-weight: 600;
-          margin: 40px 0 50px 0;
+          margin: 40px 0 45px 0;
           strong {
             font-size: 48px;
             color: #000;
@@ -278,16 +305,20 @@ html {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 15px;
+          gap: 13px;
           li {
+            // color: #bbbbbb;
             list-style-type: disc;
             font-family: "Inter", sans-serif;
             font-size: 18px;
+            width: 400px;
+            color: #000;
+            line-height: 22px;
           }
         }
       }
       .card__footer {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
         margin-top: 50px;
         display: flex;
         flex-direction: column;
@@ -296,15 +327,18 @@ html {
         button {
           width: 210px;
           height: 50px;
-          background: #000;
+          // background: #000;
+          background: #fff;
           border-radius: 10px;
-          color: #fff;
+          // color: #dbdbdb;
+          color: #000;
           font-size: 20px;
           font-family: "Inter", sans-serif;
           font-weight: bold;
           text-transform: uppercase;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           transition: all 0.3s;
+          // border: 2px solid #dbdbdb;
           border: 2px solid #000;
           &:hover {
             color: #000;
@@ -316,7 +350,8 @@ html {
           font-family: "Inter", sans-serif;
           font-size: 15px;
           font-weight: 500;
-          color: #3e3d3d;
+          color: #414141;
+          // color: #acacac;
           text-transform: uppercase;
         }
       }
@@ -350,7 +385,7 @@ html {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      transition: all .3s;
+      transition: all 0.3s;
       &:hover {
         background: rgba($color: #dedede, $alpha: 0.4);
       }
@@ -388,7 +423,7 @@ html {
         overflow: hidden;
         line-height: 30px;
         padding: 0 0 0 15px;
-        border-left: 2px solid #ffd700;
+        border-left: 2px solid #000;
         user-select: none;
         margin: 0;
         transition:
