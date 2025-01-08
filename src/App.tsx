@@ -4,6 +4,9 @@ import AuthPage from "./components/authPage/AuthPage";
 import ResetEmail from "./components/authPage/ResetEmail";
 import ResetCode from "./components/authPage/ResetCode";
 import ChangePassword from "./components/authPage/ChangePassword";
+import Layout from "./components/coursePage/Layout";
+import TariffPage from "./components/coursePage/TariffPage";
+import MaterialPage from "./components/coursePage/MaterialPage";
 
 function App() {
 
@@ -14,6 +17,10 @@ function App() {
       <Route path="/auth/email" element={<ResetEmail />} />
       <Route path="/auth/code" element={<ResetCode />} />
       <Route path="/auth/password" element={<ChangePassword />} />
+      <Route path="/course" element={<Layout />}>
+        <Route path="tariff" element={<TariffPage />}/>
+        <Route path="content" element={<MaterialPage />}/>
+      </Route>
     </Routes>
   );
 }

@@ -54,6 +54,10 @@ a, a:visited {
   text-decoration: none;
 }
 
+#root {
+  height: 100%;
+}
+
 a:hover {
   text-decoration: none;
 }

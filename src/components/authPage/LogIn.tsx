@@ -27,7 +27,7 @@ const LogIn = ({ handleFlip }: handleFlip) => {
     const resultAction = await dispatch(loginThunk(data));
     if (resultAction.meta.requestStatus == "fulfilled") {
       setUserData(data);
-      navigate("/course");
+      navigate("/course/content");
     } else {
       switch (resultAction.payload.status) {
         case 404:
