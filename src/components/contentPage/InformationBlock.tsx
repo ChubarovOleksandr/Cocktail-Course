@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import AccordeonItem from "./AccordeonItem";
 
 export interface accordeonItem {
@@ -28,6 +29,7 @@ const InformationBlock = () => {
     <div className="faq" id="faq">
       <div className="container">
         <div className="faq__title">FAQ's</div>
+        <NavLink to='/oferta'>Аферта</NavLink>
         <div className="question__block">
           {accordeonData.map((itemData, index) => (
             <AccordeonItem key={index} data={itemData} />
