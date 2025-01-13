@@ -7,6 +7,7 @@ import ChangePassword from "./components/authPage/ChangePassword";
 import Layout from "./components/coursePage/Layout";
 import TariffPage from "./components/coursePage/TariffPage";
 import MaterialPage from "./components/coursePage/MaterialPage";
+import OfertaPage from "./components/ofertaPage/OfertaPage";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<ContentPage />} />
       <Route path="/auth" element={<AuthPage />} />
+      <Route path="/oferta" element={<OfertaPage />} />
       <Route path="/auth/email" element={<ResetEmail />} />
       <Route path="/auth/code" element={<ResetCode />} />
       <Route path="/auth/password" element={<ChangePassword />} />
