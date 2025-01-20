@@ -9,6 +9,7 @@ import { loginThunk } from "../../store/slices/authSlice";
 import { setUserData } from "../../utils/userData";
 import { NavLink } from "react-router-dom";
 import alarmIcon from "../../assets/!.png";
+import {setLogInDate} from "../../utils/logInDate";
 
 const LogIn = ({ handleFlip }: handleFlip) => {
   const dispatch = useAppDispatch();
@@ -26,7 +27,8 @@ const LogIn = ({ handleFlip }: handleFlip) => {
   const onSubmitHandler = async (data: formData) => {
     const resultAction = await dispatch(loginThunk(data));
     if (resultAction.meta.requestStatus == "fulfilled") {
-      setUserData(data);
+      setUserData({...data, course: /*resultAction.payload.course*/ 3});
+      setLogInDate();
       navigate("/course/content");
     } else {
       switch (resultAction.payload.status) {

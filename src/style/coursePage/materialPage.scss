@@ -10,6 +10,26 @@
     justify-content: space-between;
     gap: 80px;
   }
+  .message-block {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    .message {
+      font-size: 36px;
+      color: #fff;
+    }
+    a {
+      font-size: 26px;
+      color: #fff;
+      font-weight: bold;
+      padding: 15px 25px;
+      border-radius: 35px;
+      border: 2px solid #fff;
+    }
+  }
   .lectures {
     flex: 25%;
     min-width: 400px;

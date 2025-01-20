@@ -3,7 +3,8 @@ import { lectureType } from "../types/materialTypes";
 export const lectures: lectureType[] = [
   {
     id: 0,
-    url: "https://drive.google.com/file/d/1sf5kF8nY-iSggT8tNKUUkxqbKgtjXYGl/preview",
+    // url: "https://drive.google.com/file/d/1sf5kF8nY-iSggT8tNKUUkxqbKgtjXYGl/preview",
+    url: "https://drive.google.com/file/d/1sf5kF8nY-iSggT8tNKUUkxqbKgtjXYGl/view",
     name: "Основы. Спирт в напитках и его значение",
     title: "Введение в основы спиртных напитков",
     subtitle:

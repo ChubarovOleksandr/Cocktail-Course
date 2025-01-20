@@ -7,3 +7,9 @@ export const setUserData = (data: formData) => {
 export const removeUserData = () => {
   localStorage.removeItem('userData');
 }
+
+export const getUserData = (): formData | null => {
+  const userData =  localStorage.getItem(('userData'));
+  if(userData) return JSON.parse(userData)
+  return null;
+}
