@@ -91,7 +91,14 @@ html {
       flex-direction: column;
       padding-right: 4%;
       text-align: right;
+      .animation {
+        transform: translate(-200px, 0);
+        opacity: 0;
+      }
       h1 {
+        transition: all .6s;
+        transform: translate(0px, 0);
+        opacity: 1;
         font-weight: bold;
         font-family: "Inter", serif;
         font-size: 46px;
@@ -159,11 +166,16 @@ html {
     display: flex;
     flex-direction: column;
     gap: 35px;
+    .animation {
+      opacity: 0;
+      transform: translate(-200px);
+    }
     .about__item {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 40px;
+      transition: all .5s;
       .about__image img{
         width: 120px;
       }
@@ -375,7 +387,13 @@ html {
     gap: 30px;
     margin-top: 80px;
     text-align: left;
+    .animation {
+      opacity: 0;
+      transform: translate(0, 40px);
+    }
     .accordeon {
+      opacity: 1;
+      transition: all .5s;
       padding: 30px 50px;
       background: rgba($color: #dedede, $alpha: 0.2);
       border-radius: 20px;

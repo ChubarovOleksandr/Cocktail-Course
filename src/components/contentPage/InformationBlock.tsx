@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AccordeonItem from "./AccordeonItem";
 
 export interface accordeonItem {
@@ -26,6 +27,30 @@ const InformationBlock = () => {
         "Прямой возможности нет, но вы всегда можете написать нам для решения вашей проблемы.",
     },
   ];
+
+  useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove("animation");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+  
+      const items = document.querySelectorAll(".accordeon");
+  
+      items.forEach((item) => {
+        observer.observe(item);
+      });
+  
+      return () => {
+        observer.disconnect();
+      };
+    }, []);
 
   return (
     <div className="faq" id="faq">

@@ -10,7 +10,7 @@ const AccordeonItem = ({data}: props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="accordeon" onClick={() => setIsOpen(!isOpen)}>
+    <div className="accordeon animation" onClick={() => setIsOpen(!isOpen)}>
       <button>{data.question}</button>
       <p className={isOpen ? "open" : ""}>{data.answer}</p>
     </div>

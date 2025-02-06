@@ -3,10 +3,36 @@ import photo2 from "../../assets/2-min.jpg";
 import photo3 from "../../assets/3-min.jpg";
 import photo4 from "../../assets/4-min.jpg";
 
+import { useEffect } from "react";
+
 const AboutItems = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("animation");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const items = document.querySelectorAll(".about__item");
+
+    items.forEach((item) => {
+      observer.observe(item);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <ul className="about__list">
-      <li className="about__item">
+      <li className="about__item animation">
         <div className="about__image">
           <img src={photo1} alt="1" />
         </div>
@@ -21,7 +47,7 @@ const AboutItems = () => {
           </p>
         </div>
       </li>
-      <li className="about__item">
+      <li className="about__item animation">
         <div className="about__image">
           <img src={photo3} alt="3" />
         </div>
@@ -36,7 +62,7 @@ const AboutItems = () => {
           </p>
         </div>
       </li>
-      <li className="about__item">
+      <li className="about__item animation">
         <div className="about__image">
           <img src={photo2} alt="2" />
         </div>
@@ -50,7 +76,7 @@ const AboutItems = () => {
           </p>
         </div>
       </li>
-      <li className="about__item">
+      <li className="about__item animation">
         <div className="about__image">
           <img src={photo4} alt="4" />
         </div>
