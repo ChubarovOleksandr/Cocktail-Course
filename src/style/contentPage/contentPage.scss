@@ -336,12 +336,15 @@ html {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        button {
+        a {
           width: 210px;
           height: 50px;
           // background: #000;
           background: #fff;
           border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           // color: #dbdbdb;
           color: #000;
           font-size: 20px;
