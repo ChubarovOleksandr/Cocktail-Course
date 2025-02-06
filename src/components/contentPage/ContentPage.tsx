@@ -2,6 +2,7 @@ import AboutItems from "./AboutItems";
 import Header from "./Header";
 import Title from "./Title";
 import "../../style/contentPage/contentPage.scss";
+import '../../style/contentPage/contentMedia.scss';
 import PriceBlock from "./PriceBlock";
 import InformationBlock from "./InformationBlock";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,6 @@ const ContentPage = () => {
   const navigate = useNavigate();
 
   const handleScroll = (id: string) => {
-
     const element = document.querySelector(id);
 
     if (element) {
@@ -28,8 +28,8 @@ const ContentPage = () => {
   return (
     <>
       <div className="intro">
-          <Header handleScroll={handleScroll} />
-          <Title handleScroll={handleScroll} />
+        <Header handleScroll={handleScroll} />
+        <Title handleScroll={handleScroll} />
       </div>
       <div className="about" id="about">
         <div className="container">

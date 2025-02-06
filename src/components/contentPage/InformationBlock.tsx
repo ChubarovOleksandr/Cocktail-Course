@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import AccordeonItem from "./AccordeonItem";
 
 export interface accordeonItem {
@@ -9,19 +8,22 @@ export interface accordeonItem {
 const InformationBlock = () => {
   const accordeonData: accordeonItem[] = [
     {
-      question: "Очень часто и густо задаваемый вопрос",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat officia voluptatum iure perspiciatis, dolores doloremque earum eligendi vitae ipsa, magni, est modi blanditiis. Consectetur sapiente animi tempore dolorem laboriosam Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat officia voluptatum iure perspiciatis, dolores doloremque earum eligendi vitae ipsa, magni, est modi blanditiis. Consectetur sapiente animi tempore dolorem laboriosam",
+      question: "Как проходит оплата?",
+      answer: "Для оплаты вам нужно перейти в нашего Telegram-бота и следовать указаниям.",
     },
     {
-      question: "Очень часто и густо задаваемый вопрос",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat officia voluptatum iure perspiciatis, dolores doloremque earum eligendi vitae ipsa, magni, est modi blanditiis. Consectetur sapiente animi tempore dolorem laboriosam!",
+      question: "С каких стран доступна оплата?",
+      answer: "Оплата доступна для таких стран как Украина, Россия и Казахстан.",
     },
     {
-      question: "Очень часто и густо задаваемый вопрос",
+      question: "Что делать если я забыл пароль от аккаунта?",
       answer:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat officia voluptatum iure perspiciatis, dolores doloremque earum eligendi vitae ipsa, magni, est modi blanditiis. Consectetur sapiente animi tempore dolorem laboriosam!",
+        "При входе в аккаунт вы сможете без проблем восстановить пароль по указанной вами почте.",
+    },
+    {
+      question: "Можно ли перенести курс на другой аккаунт?",
+      answer:
+        "Прямой возможности нет, но вы всегда можете написать нам для решения вашей проблемы.",
     },
   ];
 
@@ -29,7 +31,6 @@ const InformationBlock = () => {
     <div className="faq" id="faq">
       <div className="container">
         <div className="faq__title">FAQ's</div>
-        <NavLink to='/oferta'>Аферта</NavLink>
         <div className="question__block">
           {accordeonData.map((itemData, index) => (
             <AccordeonItem key={index} data={itemData} />

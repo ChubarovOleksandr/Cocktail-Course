@@ -1,0 +1,51 @@
+@media (max-width: 1000px) {
+  .authPage .return {
+    font-size: 18px;
+  }
+}
+@media (max-width: 550px) {
+  .authPage .title {
+    font-size: 24px;
+  }
+  .authPage .card-3d-wrap {
+    min-height: 380px;
+  }
+  .authPage .card-3d-wrap .card-3d-wrapper form {
+    margin-top: 50px;
+    gap: 40px;
+  }
+  .authPage .card-3d-wrap .card-3d-wrapper form .buttons {
+    gap: 25px;
+  }
+  .authPage .card-3d-wrap .card-3d-wrapper .card-front, .authPage .card-3d-wrap .card-3d-wrapper .card-back {
+    padding: 30px 0 30px 0;
+    min-height: 380px;
+  }
+  .authPage .field-error {
+    img {
+      display: none;
+    }
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .authPage .card-3d-wrap .card-3d-wrapper form .inputs label input, .authPage .card .reset-form label input {
+    width: 280px;
+  }
+  .authPage .card-3d-wrap .card-3d-wrapper .card-front, .authPage .card-3d-wrap .card-3d-wrapper .card-back, .authPage .card {
+    background-color: rgb(23, 23, 23);
+    border: none;
+  }
+  .authPage .card-3d-wrap {
+    width: 100dvw;
+  }
+  .authPage .card .pb {
+    padding-bottom: 0px;
+  }
+  .authPage .card {
+    justify-content: center;
+    gap: 30px;
+  }
+}

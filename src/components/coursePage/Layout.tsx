@@ -1,13 +1,14 @@
+import {useEffect, useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import Header from "./Header";
-import '../../style/coursePage/layout.scss';
 import {getUserData, removeUserData} from "../../utils/userData";
-import {useEffect, useState} from "react";
 import {getLogInDate} from "../../utils/logInDate";
+import '../../style/coursePage/layout.scss';
+import '../../style/coursePage/courseMedia.scss';
 
 const Layout = () => {
     const navigate = useNavigate();
-    const [hasAccess, setHasAccess] = useState(false);
+    const [hasAccess, setHasAccess] = useState(true);
 
     const checkUserAccess = () => {
         const userData = getUserData();
@@ -38,10 +39,10 @@ const Layout = () => {
         }
     }
 
-    useEffect(() => {
-        checkUserAccess();
-        checkLastLogIn();
-    }, []);
+    // useEffect(() => {
+    //     checkUserAccess();
+    //     checkLastLogIn();
+    // }, []);
 
     if (!hasAccess) return <div></div>
 

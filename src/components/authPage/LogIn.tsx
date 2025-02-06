@@ -27,7 +27,7 @@ const LogIn = ({ handleFlip }: handleFlip) => {
   const onSubmitHandler = async (data: formData) => {
     const resultAction = await dispatch(loginThunk(data));
     if (resultAction.meta.requestStatus == "fulfilled") {
-      setUserData({...data, course: /*resultAction.payload.course*/ 3});
+      setUserData({...data, course: resultAction.payload.course});
       setLogInDate();
       navigate("/course/content");
     } else {

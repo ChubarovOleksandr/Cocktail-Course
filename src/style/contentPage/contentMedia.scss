@@ -1,0 +1,112 @@
+@media (max-width: 1700px) {
+  .price .container {
+    max-width: 90%;
+  }
+  .price .price__cards .card .card__body ul li {
+    width: 350px;
+  }
+  .price .price__cards .card .card__body {
+    height: 500px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .about .about__list .about__item .item__body {
+    padding: 10px 20px;
+  }
+  .intro .title {
+    background-position: 37vw 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 38px;
+    line-height: 46px;
+    max-width: 80%;
+  }
+  .intro .title .title__text {
+    padding-bottom: 50px;
+  }
+  .about, .price {
+    padding: 50px 0;
+  }
+  .about .about__list {
+    margin-top: 50px;
+    gap: 25px;
+  }
+  .about .about__title, .price .price__title {
+    font-size: 38px;
+  }
+  .about .about__list .about__item .item__body .item__title {
+    font-size: 22px;
+  }
+  .about .about__list .about__item .item__body .item__p {
+    line-height: 27px;
+    margin: 15px auto 0 auto;
+  }
+  .price .price__description {
+    font-size: 22px;
+    margin-top: 30px;
+  }
+  .price .price__cards .card .card__header {
+    height: 60px;
+  }
+  .price .price__cards .card .card__body ul li {
+    font-size: 16px;
+  }
+  .price .price__cards .card .card__body {
+    height: 530px;
+    justify-content: space-around;
+  }
+  .faq {
+    padding: 60px 0 20px 0;
+  }
+  .faq .faq__title {
+    font-size: 38px;
+  }
+  .faq .question__block {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .intro .header .container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+  .intro .header .links {
+    gap: 30px;
+  }
+  .intro .header .logo {
+    width: 25px;
+    height: 35px;
+  }
+  .intro .header .links a {
+    font-size: 17px;
+  }
+  .intro .header .links div {
+    img {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  .price .container {
+    max-width: 97%;
+  } 
+  .price .price__cards {
+    gap: 2%;
+  }
+  .price .price__cards .card .card__body ul {
+    gap: 6px;
+  }
+  .faq .question__block .accordeon {
+    padding: 25px 35px;
+  }
+  .faq .question__block .accordeon p {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1400px) {
+  .intro .title {
+    background-position: 34vw 0;
+  }
+}

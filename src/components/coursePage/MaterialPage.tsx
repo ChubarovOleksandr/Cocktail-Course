@@ -1,20 +1,22 @@
-import "../../style/coursePage/materialPage.scss";
+import {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
+import {NavLink, useNavigate} from "react-router-dom";
 import {RootState, useAppDispatch} from "../../store";
+import { getNotes, setNotes } from "../../utils/notesData";
 import {setActiveLecture} from "../../store/slices/lectureSlice";
 import {lectureType} from "../../types/materialTypes";
 import {lectures} from "../../data/lecturesData";
-import infoIcon from "../../assets/information.png";
-import {useEffect, useRef, useState} from "react";
 import {getUserData} from "../../utils/userData";
-import {NavLink, useNavigate} from "react-router-dom";
+import infoIcon from "../../assets/information.png";
+import "../../style/coursePage/materialPage.scss";
+import '../../style/coursePage/courseMedia.scss';
 
 const MaterialPage = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const activeLecture = useSelector((state: RootState) => state.lecture.activeLecture);
 
+  const infoRef = useRef<HTMLSpanElement | null>(null);
   const [message, setMessage] = useState("");
   const [isInfoShow, setIsInfoShow] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
@@ -22,6 +24,7 @@ const MaterialPage = () => {
   const noteRef = useRef<HTMLTextAreaElement | null>(null);
 
   const onSelectLecture = (lecture: lectureType) => {
+    setNewNote('');
     dispatch(setActiveLecture(lecture));
   };
 
@@ -29,13 +32,43 @@ const MaterialPage = () => {
     return !!getUserData()?.course;
   };
 
+  const onSaveNote = () => {
+    if(activeLecture?.id != null){
+      setNotes(activeLecture.id, newNote);
+    }
+  };
+
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 1500 && infoRef.current) {
+      infoRef.current.addEventListener("click", () =>
+        alert("Пожалуйста, не очищайте кеш этого сайта, иначе ваши заметки пропадут")
+      );
+    }
+
+    return () => {
+      if(infoRef.current) {
+        infoRef.current.removeEventListener('click', () => {})
+      }
+    }
+  }, [])
+
   useEffect(() => {
     const access = checkCourseAccess();
-    setHasAccess(access);
-    if (!access) {
-      setMessage("Вы не купили никакой курс. Хотите перейти к выбору сейчас?");
-    }
+    setHasAccess(true);
+    // if (!access) {
+    //   setMessage("Вы не купили никакой курс. Хотите перейти к выбору сейчас?");
+    // }
   }, []);
+
+  useEffect(() => {
+    if(activeLecture?.id != null){
+      const oldNote = JSON.parse(getNotes(activeLecture?.id)!);
+      if (oldNote) {
+        setNewNote(oldNote);
+      }
+    }
+  }, [activeLecture?.id])
 
   return (
     <div className="content">
@@ -66,9 +99,9 @@ const MaterialPage = () => {
                 <div className="preview">
                   <h1>Выберите любую лекцию и получайте знания уже сейчас!</h1>
                   <h2>
-                    Подчеркните огромное количество новых знаний, слушая каждую лекцию! Используйте возможность
-                    делать подробные{" "}
-                    <span>
+                    Подчеркните огромное количество новых знаний, слушая каждую лекцию! Используйте
+                    возможность делать подробные{" "}
+                    <span ref={infoRef}>
                       заметки
                       <img
                         onMouseEnter={() => setIsInfoShow(true)}
@@ -80,7 +113,8 @@ const MaterialPage = () => {
                         Пожалуйста, не очищайте кеш этого сайта, иначе ваши заметки пропадут
                       </div>
                     </span>
-                    , конспектируйте самые ценные идеи и тонкости, чтобы ничего не упустить на пути к знаниям
+                    , конспектируйте самые ценные идеи и тонкости, чтобы ничего не упустить на пути
+                    к знаниям
                   </h2>
                   <button onClick={() => dispatch(setActiveLecture(lectures[0]))}>Начать</button>
                 </div>
@@ -92,10 +126,13 @@ const MaterialPage = () => {
                   <div className="note">
                     <textarea
                       ref={noteRef}
+                      value={newNote}
                       onChange={(e) => setNewNote(e.target.value)}
                       placeholder="Введите заметку"
                     ></textarea>
-                    <button className={newNote.length > 0 ? "active" : ""}>Сохранить</button>
+                    <button onClick={onSaveNote} className={newNote.length > 0 ? "active" : ""}>
+                      Сохранить
+                    </button>
                   </div>
                 </div>
               )}

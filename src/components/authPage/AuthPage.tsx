@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "../../style/authPage/authPage.scss";
-import arrowLeftIcon from '../../assets/arrow-left.png';
+import { NavLink } from 'react-router-dom';
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
-import { NavLink } from 'react-router-dom';
+import arrowLeftIcon from '../../assets/arrow-left.png';
+import "../../style/authPage/authPage.scss";
+import '../../style/authPage/authPageMedia.scss';
 
 export interface handleFlip {
   handleFlip: () => void;
