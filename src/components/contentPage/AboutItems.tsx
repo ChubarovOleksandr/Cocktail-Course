@@ -7,27 +7,36 @@ import { useEffect } from "react";
 
 const AboutItems = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("animation");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth > 700) {
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove("animation");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    const items = document.querySelectorAll(".about__item");
+      const items = document.querySelectorAll(".about__item");
 
-    items.forEach((item) => {
-      observer.observe(item);
-    });
+      items.forEach((item) => {
+        observer.observe(item);
+      });
 
-    return () => {
-      observer.disconnect();
-    };
+      return () => {
+        observer.disconnect();
+      };
+    } else {
+      const items = document.querySelectorAll(".about__item");
+      items.forEach((item) => {
+        item.classList.remove('animation')
+      });
+    }
   }, []);
 
   return (

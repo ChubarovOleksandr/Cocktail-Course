@@ -300,6 +300,12 @@
   .price .price__cards .card .card__body ul li {
     width: 300px;
   }
+  .faq .question__block .accordeon button {
+    max-width: 90%;
+    &:after {
+      right: -25px;
+    }
+  }
 }
 
 //header

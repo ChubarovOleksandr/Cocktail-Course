@@ -10,8 +10,6 @@ const Title = ({ handleScroll }: handleScroll) => {
       
       const element = elements[i];
       setTimeout(() => {
-        console.log(element);
-        
         element.classList.remove("animation");
       }, i * 200);
     }
