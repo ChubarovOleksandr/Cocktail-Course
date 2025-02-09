@@ -549,6 +549,102 @@
     background-position: 100px 0;
   }
 }
+@media (max-width: 500px) and (max-height: 838px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -80px 0;
+  }
+}
+@media (max-width: 500px) and (max-height: 794px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -50px 0;
+  }
+}
+@media (max-width: 500px) and (max-height: 724px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -20px 0;
+  }
+}
+@media (max-width: 500px) and (max-height: 670px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 0px 0;
+  }
+}
+@media (max-width: 500px) and (max-height: 610px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 30px 0;
+  }
+}
+@media (max-width: 500px) and (max-height: 551px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 60px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 839px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -90px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 791px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -60px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 715px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: -20px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 643px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 0px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 595px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 30px 0;
+  }
+}
+@media (max-width: 450px) and (max-height: 547px) {
+  .intro .title .title__text {
+    width: 285px;
+  }
+  .intro .title {
+    background-position: 50px 0;
+  }
+}
 
 @media (max-width: 1000px) {
   .intro .title .title__text h1 {
@@ -660,7 +756,7 @@
 }
 @media (max-width: 400px) {
   .price .price__cards .card .card__body ul li {
-    text-align: left;
+    text-align: center;
     padding-left: 5px;
     &:before {
       top: 45%;
@@ -749,5 +845,10 @@
   }
   .intro .header .header__nav .header__list {
     gap: 0;
+  }
+}
+@media (max-width: 556px) {
+  .intro .title .title__text h1 {
+    font-size: 22px;
   }
 }
