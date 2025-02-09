@@ -1,20 +1,34 @@
 import { useState } from "react";
-import { accordeonItem } from "./InformationBlock";
+import { FaqItemInterface } from "./InformationBlock";
 
-interface props {
-  data: accordeonItem;
+interface Props {
+  data: FaqItemInterface;
 }
 
-const AccordeonItem = ({data}: props) => {
-
+const AccordeonItem = ({ data }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="accordeon animation" onClick={() => setIsOpen(!isOpen)}>
       <button>{data.question}</button>
-      <p className={isOpen ? "open" : ""}>{data.answer}</p>
+      <div className={isOpen ? "open content" : "content"}>
+        {data.answer.map((answerItem, index) => (
+          <>
+            {answerItem.span && <p key={index}>{answerItem.span}</p>}
+            {answerItem.p && (
+              <ul key={index}>
+                {answerItem.p.map((paragraph, pIndex) => (
+                  <li key={pIndex}>
+                    <span>{paragraph}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        ))}
+      </div>
     </div>
   );
-}
- 
+};
+
 export default AccordeonItem;

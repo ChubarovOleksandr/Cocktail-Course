@@ -1,7 +1,7 @@
 import photo1 from "../../assets/1-min.jpg";
 import photo2 from "../../assets/2-min.jpg";
 import photo3 from "../../assets/3-min.jpg";
-import photo4 from "../../assets/4-min.jpg";
+import photo5 from "../../assets/5-min.jpg";
 
 import { useEffect } from "react";
 
@@ -43,7 +43,7 @@ const AboutItems = () => {
     <ul className="about__list">
       <li className="about__item animation">
         <div className="about__image">
-          <img src={photo1} alt="1" />
+          <img src={photo2} alt="1" />
         </div>
         <div className="item__body">
           <span className="item__title">Профессионалы с опытом</span>
@@ -58,7 +58,7 @@ const AboutItems = () => {
       </li>
       <li className="about__item animation">
         <div className="about__image">
-          <img src={photo3} alt="3" />
+          <img src={photo5} alt="3" />
         </div>
         <div className="item__body">
           <span className="item__title">Начинающие мастера барного искусства</span>
@@ -73,7 +73,7 @@ const AboutItems = () => {
       </li>
       <li className="about__item animation">
         <div className="about__image">
-          <img src={photo2} alt="2" />
+          <img src={photo3} alt="2" />
         </div>
         <div className="item__body">
           <span className="item__title">Любители коктейлей и гастрономических удовольствий</span>
@@ -87,7 +87,7 @@ const AboutItems = () => {
       </li>
       <li className="about__item animation">
         <div className="about__image">
-          <img src={photo4} alt="4" />
+          <img src={photo1} alt="4" />
         </div>
         <div className="item__body">
           <span className="item__title">Будущие владельцы баров</span>
