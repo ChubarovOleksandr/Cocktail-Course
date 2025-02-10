@@ -651,6 +651,7 @@
     max-width: 85%;
     font-size: 28px;
     line-height: 32px;
+    letter-spacing: 1.5px;
   }
   .about .about__title,
   .price .price__title {
@@ -685,6 +686,9 @@
   .price .price__title {
     font-size: 28px;
   }
+  .about .about__list .about__item img {
+    filter: none;
+  }
   .intro .title .title__text .title__button {
     width: 130px;
     height: 40px;
@@ -707,9 +711,6 @@
   .about,
   .price {
     padding: 40px 0;
-  }
-  .about .about__list .about__item .about__image {
-    display: none;
   }
   .about .about__list .about__item .item__body {
     text-align: center;
@@ -736,6 +737,9 @@
       right: -25px;
     }
   }
+  .about .about__list .about__item {
+    flex-direction: column !important;
+  }
 }
 @media (max-width: 440px) {
   .price .price__cards .card .card__body ul li {
@@ -752,6 +756,12 @@
       border-radius: 100%;
       content: "";
     }
+  }
+  .price .price__cards .card .card__body ul li {
+    font-size: 15px;
+    max-width: 240px;
+    line-height: 18px;
+    padding-left: 0 !important;
   }
 }
 @media (max-width: 400px) {
@@ -774,10 +784,6 @@
   }
   .faq .question__block .accordeon .content {
     padding: 0;
-  }
-  .price .price__cards .card .card__body ul li {
-    font-size: 15px;
-    width: 280px;
   }
   .faq .question__block .accordeon .content.open {
     margin-top: 5px;
@@ -849,6 +855,7 @@
 }
 @media (max-width: 556px) {
   .intro .title .title__text h1 {
-    font-size: 22px;
+    font-size: 21px;
+    max-width: 94%;
   }
 }
