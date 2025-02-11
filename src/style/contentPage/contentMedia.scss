@@ -537,6 +537,119 @@
     max-width: 100%;
   }
 }
+@media (max-width: 540px) and (max-height: 1110px) {
+  .intro .title .title__text {
+    width: 250px;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -240px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 1030px) {
+  .intro .title .title__text {
+    width: 250px;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -190px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 1030px) {
+  .intro .title .title__text {
+    width: 250px;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -160px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 1030px) {
+  .intro .title .title__text {
+    width: 250px;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -120px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 778px) {
+  .intro .title .title__text {
+    width: 250px;
+    padding-bottom: 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -80px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 715px) {
+  .intro .title .title__text {
+    width: 250px;
+    padding-bottom: 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -50px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 645px) {
+  .intro .title .title__text {
+    width: 250px;
+    padding-bottom: 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -30px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 600px) {
+  .intro .title .title__text {
+    width: 250px;
+    padding-bottom: 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: -10px 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 550px) {
+  .intro .title .title__text {
+    width: 250px;
+    padding-bottom: 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 18px;
+    line-height: 26px !important;
+  }
+  .intro .title {
+    background-position: 10px 0;
+  }
+}
 @media (max-width: 500px) {
   .price .price__cards .card .card__body .subdescription {
     line-height: 18px;
