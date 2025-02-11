@@ -222,6 +222,81 @@
     line-height: 38px;
   }
 }
+@media (max-width: 910px) and (max-height: 950px) {
+  .intro .title .title__text {
+    width: 550px;
+  }
+  .intro .title {
+    background-position: 140px 0;
+  }
+}
+@media (max-width: 910px) and (max-height: 880px) {
+  .intro .title .title__text {
+    width: 550px;
+  }
+  .intro .title {
+    background-position: 170px 0;
+  }
+}
+@media (max-width: 790px) and (max-height: 935px) {
+  .intro .title .title__text {
+    width: 450px;
+  }
+  .intro .title {
+    background-position: 40px 0;
+  }
+}
+@media (max-width: 790px) and (max-height: 880px) {
+  .intro .title .title__text {
+    width: 450px;
+  }
+  .intro .title {
+    background-position: 70px 0;
+  }
+}
+@media (max-width: 690px) and (max-height: 935px) {
+  .intro .title .title__text {
+    width: 400px;
+  }
+  .intro .title {
+    background-position: 00px 0;
+  }
+}
+@media (max-width: 790px) and (max-height: 880px) {
+  .intro .title .title__text {
+    width: 400px;
+  }
+  .intro .title {
+    background-position: 20px 0;
+  }
+}
+@media (max-width: 665px) and (max-height: 935px) {
+  .intro .title .title__text {
+    width: 370px;
+  }
+  .intro .title {
+    background-position: -40px 0;
+  }
+}
+@media (max-width: 600px) and (max-height: 935px) {
+  .intro .title .title__text {
+    width: 340px;
+  }
+  .intro .title {
+    background-position: -70px 0;
+  }
+  .intro .title .title__text h1 {
+    font-size: 24px !important;
+  }
+}
+@media (max-width: 600px) and (max-height: 880px) {
+  .intro .title .title__text {
+    width: 340px;
+  }
+  .intro .title {
+    background-position: -40px 0;
+  }
+}
 @media (max-width: 1455px) and (max-height: 760px) {
   .intro .title .title__text {
     width: 830px;
