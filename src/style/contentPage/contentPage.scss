@@ -10,7 +10,7 @@ html {
 
 .intro {
   background: rgb(22, 17, 13);
-  height: 100dvh;
+  height: 100vh;
   .header {
     position: fixed;
     top: 0;
@@ -78,11 +78,12 @@ html {
     background-image: url("../../assets/985A5117\ 2-min.jpg");
     background-position: 41vw 0;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: contain;
     .title__text {
       display: flex;
       width: 62.5vw;
-      min-height: 100dvh;
+      min-height: 100vh;
       // height: 100%;
       background: rgba(24, 19, 15, 0.95);
       align-items: flex-end;
