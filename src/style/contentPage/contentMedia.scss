@@ -144,6 +144,9 @@
   .intro .title .title__text {
     width: 105vh;
   }
+  .price .price__cards .card .card__body ul li {
+    width: 330px;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -739,6 +742,11 @@
   }
   .about .about__list .about__item {
     flex-direction: column !important;
+  }
+}
+@media (max-width: 550px) {
+  .price .price__cards .card .card__body ul li {
+    max-width: 250px;
   }
 }
 @media (max-width: 440px) {
