@@ -180,7 +180,8 @@
     width: 85vw;
   }
   .layout .content .lectures ul {
-    max-height: 100px;
+    max-height: 100%;
+    padding-bottom: 20px;
   }
   .layout .content .video {
     display: flex;
@@ -203,9 +204,6 @@
   .layout .content .video h2 {
     max-width: 90%;
     font-size: 16px;
-  }
-  .layout .content {
-    height: 100%;
   }
 }
 

@@ -11,9 +11,6 @@ const PriceCard = ({ data }: props) => {
         <span>{data.title}</span>
       </div>
       <div className="card__body">
-        {/* {data.title == 'Старт'
-      ? <span>$<strong>{data.price}</strong> / месяц</span>
-      : <span>$<strong>{data.price}</strong></span>} */}
         <span className="subtitle">{data.subtitle}</span>
         <p className="subdescription">{data.description}</p>
         <ul>
@@ -23,7 +20,11 @@ const PriceCard = ({ data }: props) => {
         </ul>
       </div>
       <div className="card__footer">
+        {/* <span className="price">{data.price} $</span> */}
+        <div className="block">
+          <span className="price">{data.price} $</span>
         <a href="https://t.me/roles_requests_bot">Получить</a>
+        </div>
         {data.recommended && <span>( Рекомендуемый )</span>}
       </div>
     </div>
