@@ -669,7 +669,24 @@
 }
 @media (max-width: 550px) {
   .price .price__cards .card .card__body ul li {
-    max-width: 250px;
+    list-style-type: none;
+    font-size: 14px !important;
+    padding-left: 0 !important;
+    width: auto;
+    max-width: 60vw;
+    position: relative;
+    text-align: justify;
+    text-align-last: center;
+    &:before {
+      position: absolute;
+      top: 10px;
+      left: -10px;
+      width: 5px;
+      height: 5px;
+      background: #000;
+      border-radius: 100%;
+      content: "";
+    }
   }
 }
 @media (max-width: 440px) {
