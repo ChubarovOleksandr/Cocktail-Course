@@ -15,7 +15,10 @@ const PriceCard = ({ data }: props) => {
         <p className="subdescription">{data.description}</p>
         <ul>
           {data.advantages.map((advantageText, index) => (
-            <li key={index}>{advantageText}</li>
+            <li key={index}>
+              <b>⚫</b>
+              {advantageText}
+            </li>
           ))}
         </ul>
       </div>
@@ -23,7 +26,7 @@ const PriceCard = ({ data }: props) => {
         {/* <span className="price">{data.price} $</span> */}
         <div className="block">
           <span className="price">{data.price} $</span>
-        <a href="https://t.me/roles_requests_bot">Получить</a>
+          <a href="https://t.me/roles_requests_bot">Получить</a>
         </div>
         {data.recommended && <span>( Рекомендуемый )</span>}
       </div>
