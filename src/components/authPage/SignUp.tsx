@@ -1,15 +1,13 @@
 import { useForm } from "react-hook-form";
 import emailIcon from "../../assets/email.png";
 import passwordIcon from "../../assets/lock.png";
-import { handleFlip } from "./AuthPage";
-import { registerThunk } from "../../store/slices/authSlice";
-import { formData } from "../../types/authTypes";
-import { useAppDispatch } from "../../store";
+import { HandleFlip } from "./AuthPage";
 import alarmIcon from "../../assets/!.png";
 import { useNavigate } from "react-router-dom";
+import { LoginDataInterface } from "../../api/interface";
+import { createUserAPI } from "../../api/users/UsersService";
 
-const SignUp = ({ handleFlip }: handleFlip) => {
-  const dispatch = useAppDispatch();
+const SignUp = ({ handleFlip }: HandleFlip) => {
   const navigate = useNavigate();
 
   const {
@@ -17,30 +15,16 @@ const SignUp = ({ handleFlip }: handleFlip) => {
     handleSubmit,
     setError,
     formState: { errors, isValid },
-  } = useForm<formData>({
+  } = useForm<LoginDataInterface>({
     mode: "onSubmit",
   });
 
-  const onSubmitHandler = async (data: formData) => {
+  const onSubmitHandler = async (data: LoginDataInterface) => {
     try {
-      const resultAction = await dispatch(registerThunk(data));
-      if (resultAction.meta.requestStatus == "fulfilled") {
-        navigate("/course");
-      } else {
-        switch (resultAction.payload.status) {
-          case 409:
-            setError("email", { message: "Эта почта уже зарегистрирована" });
-            break;
-          case 422:
-            setError("email", { message: "Проверьте правильность почты" });
-            break;
-          default:
-            setError("email", { message: "Ошибка. Попробуйте позже" });
-            break;
-        }
-      }
+      await createUserAPI(data);
+      navigate("/course");
     } catch (error) {
-      console.error("Ошибка:", error);
+      setError("email", { message: "Ошибка при регистрации" });
     }
   };
 

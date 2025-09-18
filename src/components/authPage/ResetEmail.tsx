@@ -1,11 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store";
 import arrowLeftIcon from "../../assets/arrow-left.png";
 import { useForm } from "react-hook-form";
-import { emailField } from "../../types/authTypes";
 import emailIcon from "../../assets/email.png";
-import { checkEmailThunk, setResetEmail } from "../../store/slices/authSlice";
 import alarmIcon from "../../assets/!.png";
+import { EmailInterface } from "../../api/passwords/interface";
+import { requestResetPasswordAPI } from "../../api/passwords/PasswordService";
+import { useAppDispatch } from "../../store";
+import { setUserEmail } from "../../store/slices/authSlice";
 
 const ResetEmail = () => {
   const dispatch = useAppDispatch();
@@ -16,23 +17,16 @@ const ResetEmail = () => {
     setError,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<emailField>();
+  } = useForm<EmailInterface>();
 
-  const onSubmitHandler = async (email: emailField) => {
-    const resultAction = await dispatch(checkEmailThunk(email));
-    if (resultAction.meta.requestStatus == "fulfilled") {
-      await dispatch(setResetEmail(email.email))
-      navigate('/auth/code')
-    }
-    if (resultAction.meta.requestStatus == "rejected") {
-      switch (resultAction.payload.status) {
-        case 422:
-          setError("email", { message: "Проверьте правильность почты" });
-          break;
-        default:
-          setError("email", { message: "Ошибка. Попробуйте позже" });
-          break;
-      }
+  const onSubmitHandler = async ({ email }: EmailInterface) => {
+    try {
+      await requestResetPasswordAPI({ email });
+
+      dispatch(setUserEmail(email));
+      navigate("/auth/code");
+    } catch (error) {
+      setError("email", { message: "Ошибка при отправке письма" });
     }
   };
 

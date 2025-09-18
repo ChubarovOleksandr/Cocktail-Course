@@ -1,52 +1,55 @@
 import { useForm } from "react-hook-form";
 import emailIcon from "../../assets/email.png";
 import passwordIcon from "../../assets/lock.png";
-import { handleFlip } from "./AuthPage";
-import { formData } from "../../types/authTypes";
-import { useAppDispatch } from "../../store";
+import { HandleFlip } from "./AuthPage";
 import { useNavigate } from "react-router-dom";
-import { loginThunk } from "../../store/slices/authSlice";
-import { setUserData } from "../../utils/userData";
 import { NavLink } from "react-router-dom";
 import alarmIcon from "../../assets/!.png";
-import {setLogInDate} from "../../utils/logInDate";
+import { LoginDataInterface } from "../../api/interface";
+import axios from "axios";
+import { loginUserAPI } from "../../api/users/UsersService";
+import { getUserData, setUserData } from "../../utils/userData";
+import { useEffect } from "react";
 
-const LogIn = ({ handleFlip }: handleFlip) => {
-  const dispatch = useAppDispatch();
+const LogIn = ({ handleFlip }: HandleFlip) => {
   const navigate = useNavigate();
 
   const {
     register,
     setError,
+    setValue,
+    trigger,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<formData>({
+  } = useForm<LoginDataInterface>({
     mode: "onSubmit",
   });
 
-  const onSubmitHandler = async (data: formData) => {
-    const resultAction = await dispatch(loginThunk(data));
-    if (resultAction.meta.requestStatus == "fulfilled") {
-      setUserData({...data, course: resultAction.payload.course});
-      setLogInDate();
+  const onSubmitHandler = async (data: LoginDataInterface) => {
+    try {
+      await loginUserAPI(data);
+
+      setUserData(data);
       navigate("/course/content");
-    } else {
-      switch (resultAction.payload.status) {
-        case 404:
-          setError("email", { message: "Пользователь не найден" });
-          break;
-        case 422:
-          setError("email", { message: "Почта не корректна" });
-          break;
-        case 401:
-          setError("password", { message: "Неверный пароль" });
-          break;
-        default:
-          setError("password", { message: "Ошибка. Попробуйте позже" });
-          break;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setError("email", { message: error.response.data.detail });
+      } else {
+        setError("email", { message: "Что-то пошло не так, попробуйте позже" });
       }
     }
   };
+
+  useEffect(() => {
+    const userData = getUserData();
+
+    if (userData) {
+      setValue("email", userData.email);
+      setValue("password", userData.password);
+
+      trigger();
+    }
+  }, []);
 
   return (
     <div className="card-back">

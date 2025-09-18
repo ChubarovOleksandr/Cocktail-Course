@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { cardData } from "./PriceBlock";
 
 interface props {
@@ -26,12 +27,12 @@ const PriceCard = ({ data }: props) => {
         {/* <span className="price">{data.price} $</span> */}
         <div className="block">
           <span className="price">{data.price} $</span>
-          <a href="https://t.me/roles_requests_bot">Получить</a>
+          <NavLink to={"/auth"}>Получить</NavLink>
         </div>
         {data.recommended && <span>( Рекомендуемый )</span>}
       </div>
     </div>
   );
 };
- 
+
 export default PriceCard;

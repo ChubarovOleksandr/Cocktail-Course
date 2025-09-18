@@ -5,41 +5,33 @@ import { NavLink } from "react-router-dom";
 import arrowLeftIcon from "../../assets/arrow-left.png";
 import { useForm } from "react-hook-form";
 import keyIcon from "../../assets/key.png";
-import { checkCodeThunk, checkedCode } from "../../store/slices/authSlice";
 import alarmIcon from "../../assets/!.png";
-import { codeField } from "../../types/authTypes";
 import { useEffect } from "react";
+import { verifyResetCodeAPI } from "../../api/passwords/PasswordService";
+
+interface CodeInterface {
+  code: string;
+}
 
 const ResetCode = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const resetEmail = useSelector((state: RootState) => state.auth.resetEmail);
+  const resetEmail = useSelector((state: RootState) => state.auth.userEmail);
 
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors, isValid },
-  } = useForm<codeField>();
+  } = useForm<CodeInterface>();
 
-  const onSubmitHandler = async (code: codeField) => {
-    const resultAction = await dispatch(checkCodeThunk({ code: +code.code, email: resetEmail }));
-    if(resultAction.meta.requestStatus == 'fulfilled') {
-      await dispatch(checkedCode());
+  const onSubmitHandler = async ({ code }: CodeInterface) => {
+    try {
+      await verifyResetCodeAPI({ email: resetEmail, code });
       navigate("/auth/password");
-    } else {
-      switch (resultAction.payload.status) {
-        case 404:
-          setError('code', {message: 'Неверный код'});
-          break;
-        case 422:
-          setError('code', {message: 'Произошла ошибка'});
-          break;
-        default:
-          setError('code', {message: 'Произошла ошибка'});
-          break;
-      }
+    } catch (error) {
+      setError("code", { message: "Ошибка при проверке кода" });
     }
   };
 

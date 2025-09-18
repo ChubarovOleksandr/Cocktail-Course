@@ -1,15 +1,15 @@
-import { formData } from "../types/authTypes";
+import { LoginDataInterface } from "../api/interface";
 
-export const setUserData = (data: formData) => {
-  localStorage.setItem('userData', JSON.stringify(data));
-}
+export const setUserData = (data: LoginDataInterface) => {
+  localStorage.setItem("userData", JSON.stringify(data));
+};
 
 export const removeUserData = () => {
-  localStorage.removeItem('userData');
-}
+  localStorage.removeItem("userData");
+};
 
-export const getUserData = (): formData | null => {
-  const userData =  localStorage.getItem(('userData'));
-  if(userData) return JSON.parse(userData)
+export const getUserData = (): LoginDataInterface => {
+  const userData = localStorage.getItem("userData");
+  if (userData) return JSON.parse(userData);
   return null;
-}
+};

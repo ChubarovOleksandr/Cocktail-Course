@@ -13,7 +13,7 @@ const AccordeonItem = ({ data }: Props) => {
       <button>{data.question}</button>
       <div className={isOpen ? "open content" : "content"}>
         {data.answer.map((answerItem, index) => (
-          <>
+          <div key={index}>
             {answerItem.span && <p key={index}>{answerItem.span}</p>}
             {answerItem.p && (
               <ul key={index}>
@@ -24,7 +24,7 @@ const AccordeonItem = ({ data }: Props) => {
                 ))}
               </ul>
             )}
-          </>
+          </div>
         ))}
       </div>
     </div>

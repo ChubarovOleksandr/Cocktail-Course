@@ -1,35 +1,41 @@
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store/index";
+import { RootState } from "../../store/index";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import arrowLeftIcon from "../../assets/arrow-left.png";
 import { useForm } from "react-hook-form";
 import passwordIcon from "../../assets/lock.png";
 import alarmIcon from "../../assets/!.png";
-import { passwordField } from '../../types/authTypes';
-import { resetPasswordThunk } from "../../store/slices/authSlice";
+import { resetPasswordAPI } from "../../api/passwords/PasswordService";
+
+interface PasswordInterface {
+  password: string;
+}
 
 const ChangePassword = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const resetEmail = useSelector((state: RootState) => state.auth.resetEmail);
+  const resetEmail = useSelector((state: RootState) => state.auth.userEmail);
+
+  if (!resetEmail) {
+    navigate("/auth");
+  }
 
   const {
     register,
     setError,
     handleSubmit,
-    formState: {errors, isValid}
-  } = useForm<passwordField>()
+    formState: { errors, isValid },
+  } = useForm<PasswordInterface>();
 
-  const onSubmitHandler = async (passwordField: passwordField) => {
-    const response = await dispatch(resetPasswordThunk({password: passwordField.password, email: resetEmail}));
-    if(response.meta.requestStatus == 'fulfilled') {
-      navigate('/auth');
-    } else {
-      setError('password', {message: 'Произошла ошибка'});
+  const onSubmitHandler = async ({ password }: PasswordInterface) => {
+    try {
+      await resetPasswordAPI({ email: resetEmail, new_password: password });
+      navigate("/auth");
+    } catch (error) {
+      setError("password", { message: "Ошибка при изменении пароля" });
     }
-  }
+  };
 
   return (
     <div className="authPage">

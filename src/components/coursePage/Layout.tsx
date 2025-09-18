@@ -1,55 +1,40 @@
-import {useEffect, useState} from "react";
-import {Outlet, useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { getUserInfoAPI } from "../../api/users/UsersService";
+import { getUserData } from "../../utils/userData";
 import Header from "./Header";
-import {getUserData, removeUserData} from "../../utils/userData";
-import {getLogInDate} from "../../utils/logInDate";
-import '../../style/coursePage/layout.scss';
-import '../../style/coursePage/courseMedia.scss';
+import "../../style/coursePage/layout.scss";
+import "../../style/coursePage/courseMedia.scss";
+import { PayStatusEnum } from "../../api/users/enums";
 
 const Layout = () => {
-    const navigate = useNavigate();
-    const [hasAccess, setHasAccess] = useState(true);
+  const navigate = useNavigate();
+  const [hasAccess, setHasAccess] = useState(true);
 
-    const checkUserAccess = () => {
-        const userData = getUserData();
-        if (!userData) {
-            navigate("/");
-        } else {
-            setHasAccess(true);
-        }
+  const checkUserAccess = async () => {
+    const userLoginData = getUserData();
+    const userInfo = await getUserInfoAPI(userLoginData.email);
+
+    if (!userLoginData) {
+      navigate("/");
+    } else {
+      // TODO check what to do if user not paid
+      setHasAccess(userInfo[0].pay_status !== PayStatusEnum.Unpaid);
     }
+  };
 
-    const checkLastLogIn = () => {
-        const currentDate = new Date();
-        const lastLogin = getLogInDate();
+  useEffect(() => {
+    checkUserAccess();
+  }, []);
 
-        if(lastLogin){
-            const inputDateObj = new Date(JSON.parse(lastLogin));
-            const isSameMonth = currentDate.getMonth() === inputDateObj.getMonth();
-            const isSameYear = currentDate.getFullYear() === inputDateObj.getFullYear();
+  if (!hasAccess) return <div></div>;
 
-            if (!isSameMonth || !isSameYear) {
-                removeUserData();
-            }
-
-            const dayDiff = currentDate.getDate() - inputDateObj.getDate();
-            if(dayDiff >= 30) {
-                removeUserData();
-            }
-        }
-    }
-
-    // useEffect(() => {
-    //     checkUserAccess();
-    //     checkLastLogIn();
-    // }, []);
-
-    if (!hasAccess) return <div></div>
-
-    return <div className="layout">
-        <Header/>
-        <Outlet/>
+  return (
+    <div className="layout">
+      <Header />
+      <Outlet />
     </div>
+  );
 };
 
 export default Layout;
