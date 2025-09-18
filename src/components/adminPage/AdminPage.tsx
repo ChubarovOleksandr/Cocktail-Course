@@ -18,8 +18,8 @@ export const AdminPage = () => {
   };
 
   useEffect(() => {
-    // const password = prompt("Введите пароль администратора");
-    if (1 < 2) {
+    const password = prompt("Введите пароль администратора");
+    if (password === "admin!Q2w3e4r") {
       setHasAccess(true);
       fetchUsers();
     } else {

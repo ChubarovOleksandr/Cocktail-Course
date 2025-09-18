@@ -1,44 +1,60 @@
-import {useEffect, useRef, useState} from "react";
-import {useSelector} from "react-redux";
-import {NavLink, useNavigate} from "react-router-dom";
-import {RootState, useAppDispatch} from "../../store";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { RootState, useAppDispatch } from "../../store";
 import { getNotes, setNotes } from "../../utils/notesData";
-import {setActiveLecture} from "../../store/slices/lectureSlice";
-import {lectureType} from "../../types/materialTypes";
-import {lectures} from "../../data/lecturesData";
-import {getUserData} from "../../utils/userData";
-import infoIcon from "../../assets/information.png";
+import { setActiveLecture } from "../../store/slices/lectureSlice";
+import { lectureType } from "../../types/materialTypes";
+import { lectures } from "../../data/lecturesData";
+import { getUserData } from "../../utils/userData";
 import "../../style/coursePage/materialPage.scss";
-import '../../style/coursePage/courseMedia.scss';
+import "../../style/coursePage/courseMedia.scss";
+import { getUserInfoAPI } from "../../api/users/UsersService";
+import { PayStatusEnum } from "../../api/users/enums";
 
 const MaterialPage = () => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const activeLecture = useSelector((state: RootState) => state.lecture.activeLecture);
 
   const infoRef = useRef<HTMLSpanElement | null>(null);
   const [message, setMessage] = useState("");
-  const [isInfoShow, setIsInfoShow] = useState(false);
-  const [hasAccess, setHasAccess] = useState(false);
   const [newNote, setNewNote] = useState("");
+  const [userId, setUserId] = useState<number>(null);
   const noteRef = useRef<HTMLTextAreaElement | null>(null);
 
   const onSelectLecture = (lecture: lectureType) => {
-    setNewNote('');
+    setNewNote("");
     dispatch(setActiveLecture(lecture));
   };
 
-  const checkCourseAccess = () => {
-    return !!getUserData()?.course;
-  };
-
   const onSaveNote = () => {
-    if(activeLecture?.id != null){
+    if (activeLecture?.id != null) {
       setNotes(activeLecture.id, newNote);
     }
   };
 
+  const checkUserAccess = async () => {
+    const userLoginData = getUserData();
+    const userInfo = await getUserInfoAPI(userLoginData.email);
+
+    if (!userLoginData) {
+      navigate("/");
+    } else {
+      setUserId(userInfo[0].id);
+      const hasAccess = userInfo[0].pay_status !== PayStatusEnum.Unpaid;
+
+      if (!hasAccess) {
+        setMessage(
+          'Для доступа к курсу необходимо оформить подписку. Нажмите на раздел "Тарифы" в меню'
+        );
+      }
+    }
+  };
+
   useEffect(() => {
+    checkUserAccess();
+
     const windowWidth = window.innerWidth;
     if (windowWidth < 1500 && infoRef.current) {
       infoRef.current.addEventListener("click", () =>
@@ -47,28 +63,20 @@ const MaterialPage = () => {
     }
 
     return () => {
-      if(infoRef.current) {
-        infoRef.current.removeEventListener('click', () => {})
+      if (infoRef.current) {
+        infoRef.current.removeEventListener("click", () => {});
       }
-    }
-  }, [])
-
-  useEffect(() => {
-    const access = checkCourseAccess();
-    setHasAccess(true);
-    // if (!access) {
-    //   setMessage("Вы не купили никакой курс. Хотите перейти к выбору сейчас?");
-    // }
+    };
   }, []);
 
   useEffect(() => {
-    if(activeLecture?.id != null){
+    if (activeLecture?.id != null) {
       const oldNote = JSON.parse(getNotes(activeLecture?.id)!);
       if (oldNote) {
         setNewNote(oldNote);
       }
     }
-  }, [activeLecture?.id])
+  }, [activeLecture?.id]);
 
   return (
     <div className="content">
@@ -76,7 +84,7 @@ const MaterialPage = () => {
         {message ? (
           <div className="message-block">
             <div className="message">{message}</div>
-            <NavLink to="/course/tariff">Перейти</NavLink>
+            <a href={`https://t.me/MariaBar_bot?start=${userId}`}>Перейти</a>
           </div>
         ) : (
           <>
