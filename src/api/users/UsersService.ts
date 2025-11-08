@@ -2,7 +2,7 @@ import axios from "axios";
 import { LoginDataInterface, UserInfoInterface } from "../interface";
 
 const instance = axios.create({
-  baseURL: "http://155.133.23.86:8000/users",
+  baseURL: "https://bartenderoom.org/users",
   headers: {
     "Content-Type": "application/json",
   },
