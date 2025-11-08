@@ -11,7 +11,7 @@ export const lectures: lectureType[] = [
   },
   {
     id: 1,
-    url: "https://drive.google.com/file/d/1q_oRkfri-K5shnXK2ZSr0tK8503dqZb-/preview",
+    url: "https://drive.google.com/file/d/1rZNp4Dv2emstcLXvYvPoSfm5KdaU1fEI/preview",
     name: "Джин: История, Производство, Категории и нормы сервировки. Легенда Ramos Gin Fizz и техника Blending",
     title: "Лекция 2",
     subtitle:
@@ -19,7 +19,7 @@ export const lectures: lectureType[] = [
   },
   {
     id: 2,
-    url: "https://drive.google.com/file/d/1DcwCMn9VDKWZLlmOycnbPOiZJ4OxlKaI/preview",
+    url: "https://drive.google.com/file/d/18t6RN21183gR9qjq8yYn7jAV0_u-svCR/preview",
     name: "Виски: История, Регионы Производства и Искусство Подачи. Разбор коктейля Manhattan и техника Stir",
     title: "Лекция 3",
     subtitle:
